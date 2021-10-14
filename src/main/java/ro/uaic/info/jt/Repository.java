@@ -4,48 +4,65 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.CharBuffer;
-import java.util.logging.Logger;
 
+/**
+ * A wrapper over a file which is able to write or to read the whole content.
+ */
 public class Repository
-{
-   private FileWriter writer;
+{   
+   /** The file over which the file writer is used*/
    private File file;
    
-   public Repository() 
+   /**
+    * Basic constructor.
+    * 
+    * @param   path
+    *          The path to the file used as repository.
+    */
+   public Repository(String path) 
    {
-   }
-   
-   public synchronized void initialize() 
-   throws IOException
-   {
-      if (writer == null)
-      {
-         file  = new File("C:\\tmp\\repository.txt");
-         file.createNewFile();
-         writer = new FileWriter(file);
-      }
+      file = new File(path);
    }
 
-   public void write(String text) throws IOException
+   /**
+    * Writes a text in the repository.
+    * 
+    * @param   text
+    *          The text which should be appended to the repository.
+    */
+   public void write(String text) 
+   throws IOException
    {
-      writer.write(text);
-      writer.flush();
+      try (FileWriter writer = new FileWriter(file, true))
+      {
+         writer.write(text);
+         writer.flush();
+      }
    }
    
-   public String getContent() throws IOException
+   /**
+    *   Retrieve the content in the repository.
+    * 
+    *   @return  The content in the repository in a single string.
+    */
+   public String getContent() 
+   throws IOException
    {
-      FileReader reader = new FileReader(file);
-      StringBuffer sb = new StringBuffer();
-      char[] cb = new char[100];
-      int cnt = 100;
-      while (cnt == 100)
+      try (FileReader reader = new FileReader(file))
       {
-         cnt = reader.read(cb);
-         for (int i = 0; i < cnt; i++)
-            sb.append(cb[i]);
+         StringBuffer sb = new StringBuffer();
+         char[] cb = new char[100];
+         int cnt = 100;
+         while (cnt == 100)
+         {
+            cnt = reader.read(cb);
+            for (int i = 0; i < cnt; i++)
+            {
+               sb.append(cb[i]);
+            }
+         }
+         return sb.toString();
       }
-      return sb.toString();
    }
    
 }

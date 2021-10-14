@@ -1,7 +1,7 @@
 const http = require('http');
 var crypto = require("crypto");
 
-tests = 1000;
+tests = 200;
 for (var i = 0; i < tests; i++)
 {
    let key = crypto.randomBytes(5).toString('hex');
