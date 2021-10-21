@@ -1,7 +1,6 @@
 package ro.uaic.info.mt2;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -12,16 +11,30 @@ import javax.servlet.http.*;
 import java.awt.*;
 import java.awt.image.*;
 
+/**
+ * Servlet responsible for generating captcha images based on a session level string.
+ */
 @WebServlet(name = "Captcha", urlPatterns = { "/captcha" })
 public class CaptchaHelper 
 extends HttpServlet 
 {
+   /** The font to be used when generating the captcha */
    protected static Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28);
    
+   /** The width of the captcha image */
+   private static final int width = 200;
+   
+   /** The height of the captcha image*/
+   private static final int height = 100;
+   
+   /** A random provider */
    private Random rng = new Random();
-   private final int width = 200;
-   private final int height = 100;
 
+   /**
+    * Get method used to generate a captcha image and sent it back as response. This will
+    * write the text in which each letter has a different color. Also, some ovals will 
+    * be drawn over.
+    */
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
    throws ServletException, IOException 
@@ -39,7 +52,7 @@ extends HttpServlet
       {
          color = color(150, 250);
          g.setColor(color);
-         g.drawOval(num(width), num(height), 5 + num(10), 5 + num(10));
+         g.drawOval(rngint(width), rngint(height), 5 + rngint(10), 5 + rngint(10));
       }
       g.setFont(font);
       int h = height - ((height - font.getSize()) >> 1), w = width / len, size = w - font.getSize() + 1;
@@ -48,7 +61,7 @@ extends HttpServlet
          ac3 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f);
          g.setComposite(ac3);
 
-         color = new Color(20 + num(110), 30 + num(110), 30 + num(110));
+         color = new Color(20 + rngint(110), 30 + rngint(110), 30 + rngint(110));
          g.setColor(color);
          g.drawString(strs[i] + "", (width - (len - i) * w) + size, h - 4);
       }
@@ -56,19 +69,37 @@ extends HttpServlet
       ImageIO.write(bi, "png", response.getOutputStream());
    }
 
+   /**
+    * Generate a random color.
+    * 
+    * @param   fc
+    *          The lower bound for each of the red, greed and blue base colors.
+    * @param   bc
+    *          The upper bound for each of the red, greed and blue base colors.
+    *          
+    * @return  A random generated color.
+    */ 
    protected Color color(int fc, int bc)
    {
       if (fc > 255)
          fc = 255;
       if (bc > 255)
          bc = 255;
-      int r = fc + num(bc - fc);
-      int g = fc + num(bc - fc);
-      int b = fc + num(bc - fc);
+      int r = fc + rngint(bc - fc);
+      int g = fc + rngint(bc - fc);
+      int b = fc + rngint(bc - fc);
       return new Color(r, g, b);
    }
 
-   public int num(int num)
+   /**
+    * Convenient method for retrieving a random bounded number.
+    * 
+    * @param   num
+    *          The upper bound of the generated integer.
+    *          
+    * @return  A random integer.
+    */
+   public int rngint(int num)
    {
       return rng.nextInt(num);
    }

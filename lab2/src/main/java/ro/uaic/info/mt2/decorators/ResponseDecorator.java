@@ -1,36 +1,21 @@
 package ro.uaic.info.mt2.decorators;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
 /**
- * Servlet Filter implementation class ResponseDecorator
+ * A response decorator for the forward operations towards the result page.
  */
 @WebFilter(filterName = "/ResponseDecorator", urlPatterns = {"/result.jsp"}, dispatcherTypes = { DispatcherType.FORWARD })
-public class ResponseDecorator implements Filter {
-
-
-   /**
-    * @see Filter#init(FilterConfig)
-    */
-   public void init(FilterConfig fConfig) throws ServletException {
-      // TODO Auto-generated method stub
-   }
-
+public class ResponseDecorator 
+implements Filter 
+{
 	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 * The core filter method which will add a header and a footer to the generated html by the chain.
 	 */
 	public void doFilter(ServletRequest request, ServletResponse res, FilterChain chain) 
    throws IOException, ServletException 
@@ -42,25 +27,40 @@ public class ResponseDecorator implements Filter {
       wrapper.getWriter().write("<container><p>List of all records</p></container>");
       response.getWriter().write(wrapper.toString());
 	}
-
 }
 
+/**
+ * A simple response wrapper used for safely propagation of request through the chain.
+ */
 class SimpleResponseWrapper
 extends HttpServletResponseWrapper 
 {
+   /** The output of the response wrapped by this class */
    private final StringWriter output = new StringWriter();
 
+   /**
+    * Basic constructor.
+    * 
+    * @param    response
+    *           The response which will be wrapper by this class.
+    */
    public SimpleResponseWrapper(HttpServletResponse response)
    {
       super(response);
    }
    
+   /**
+    * Override of the writer getter to provide the local output writer.
+    */
    @Override
    public PrintWriter getWriter() 
    {
       return new PrintWriter(output);
    }
    
+   /**
+    * Convenient to string method.
+    */
    @Override
    public String toString() 
    {

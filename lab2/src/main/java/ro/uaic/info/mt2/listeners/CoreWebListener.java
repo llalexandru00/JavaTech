@@ -7,8 +7,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.*;
 
 /**
- * Application Lifecycle Listener implementation class WebListener
- *
+ * A basic web listener which sets the default category application level attribute at sever startup.
  */
 @WebListener()
 public class CoreWebListener 
@@ -17,6 +16,9 @@ implements ServletContextListener
      /** Basic logger */
      private final Logger LOG = Logger.getLogger(CoreWebListener.class.getName());
    
+     /**
+      * Listener for the server start-up which sets the default-category based on a init parameter.
+      */
      public void contextInitialized(ServletContextEvent sce)  
      { 
         String defaultCategory = sce.getServletContext().getInitParameter("default-category");

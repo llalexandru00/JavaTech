@@ -25,10 +25,7 @@ public class Record
    @Column(name = "value", unique = true, nullable = false, length = 1000)
    private String value;
    
-   public Record() 
-   {
-      
-   }
+   public Record() { }
    
    public Record(Category category, String key, String value)
    {
