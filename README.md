@@ -15,7 +15,7 @@ In afara de [clientul web](https://github.com/llalexandru00/JavaTech/blob/main/l
 
 * https://profs.info.uaic.ro/~acf/tj/labs/lab_02.html
 
-[Servletul Web controller](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/java/ro/uaic/info/mt2/WebController.java) implementeaza:
+[Servletul Web controller](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/java/ro/uaic/info/mt2/WebController.java) implementeaza in spiritul MVC:
 * metoda GET pentru a gestiona requesturi ce vor fi trimise catre [input page](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/webapp/input.jsp). Aceste requesturi vor avea ca atribute categoria preselectata (daca utilizatorul are un cookie ce sa specifice acest lucru) si multimea categoriilor stocate in baza de date. Mai mult, la nivel de sesiune se va adauga un atribut pentru generarea de captcha. In sfarsit, pagina va fi construita cu JSTL si va incorpora Bootstrap. 
 * method POST pentru a gestiona requesturi ce vor fi trimise catre [result page](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/webapp/result.jsp). Un request va oferi parametrii pentru category, key si value. Daca category nu exista, acesta va fi initializat cu ajutorul unui atribut la nivel de aplicatie "default-category". De asemnea, captcha-ul va fi verificat. In final un [record bean](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/java/ro/uaic/info/mt2/beans/Record.java) va fi creat si persistat in baza de date.
 
