@@ -27,3 +27,16 @@ Aplicatia contine de asemenea doua filtre web si un listener web:
 * [Listenerul](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/java/ro/uaic/info/mt2/listeners/CoreWebListener.java) citeste un parametru de context si il adauga in scope-ul aplicatiei sub forma de atribut. Acest parametru de context este categoria default ce trebuie setata daca aceasta nu apare in requesturile POST.
 
 In final, aplicatia fololseste o baza de date gestionata prin intermediul unui [layer de persistenta](https://github.com/llalexandru00/JavaTech/blob/main/lab2/src/main/java/ro/uaic/info/mt2/Persistence.java) ce foloseste Hibernate.
+
+
+## Lab 3
+
+* https://profs.info.uaic.ro/~acf/tj/labs/lab_03.html
+
+Proiectul foloseste JSF impreuna cu mai multe bean-uri:
+* [Language Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/beans/LanguageBean.java) este un bean la nivel de sesiune ce gestioneaza selectia limbii curente (locale). Proiectul suporta doua limbi: [engleza](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/resources/Messages.properties) si [romana](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/resources/Messages_ro_RO.properties).
+* [Exam Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/beans/ExamBean.java) este un bean la nivel de request ce gestioneaza work-flow-ul legat de examene. Acesta agrega un model low-level pentru examene ce este persistat in baza din date prin Hibernate folostind [Exam](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/model/Exam.java).
+* [Student Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/beans/StudentBean.java) este un bean la nivel de request ce gestioneaza work-flow-ul legat de studenti. Acesta agrega un model low-level pentru studenti ce este peristat in baza de date prin Hibvernate folostind [Student](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/model/Student.java). Relatia examene-studenti este many-to-many, motiv pentru care, fizic, baza de date contine si un tabel ce mapeaza id-uri de studenti la id-uri de examene.
+* [Schedule Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/beans/ScheduleBean.java) este un bean la nivel de request ce gestioneaza componenta de grupare a examenelor pe zile. Acesta genereaza un model pentru componenta UI bazandu-se pe solutia problemei orarului rezolvata cu ajutorul SMT-solver-ului [Z3](https://github.com/Z3Prover/z3). [Z3 Schedule Resolver](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/util/Z3ScheduleResolver.java) adauga in contextul Z3 constrangerile legate de examene sub forma de conditii logice. Pentru a optimiza numarul de zile, se aplica cautarea binara a numarul optim de zile folosind satisfiabilitatea formulei ca baza a functiei monotone suport. Modelul este extras doar dupa ce formula este satisfiabila cu numar minim de zile.
+
+Pentru partea de UI, [PrimeFaces](https://www.primefaces.org/) a fost folosit: dataTable, datePicker, selectOneMenu, inputNumber etc. De asemenea, un converter a fost folosit pentru examene pentru a le gestiona intr-un selectManyCheckbox cu selectItems.
