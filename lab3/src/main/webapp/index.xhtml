@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>Navigation</title>
+      <h:outputStylesheet library="webjars" name="primeflex/2.0.0/primeflex.min.css" />
+   </h:head>
+   <h:body>
+      <h:form>
+         <div class="ui-fluid p-formgrid p-grid">
+	         <div class="p-field p-col-12 p-md-2">
+               <p:outputLabel for="@next" value="#{msg.lang}"/>
+		         <p:selectOneMenu value="#{lang.locale}" onchange="submit()" valueChangeListener="#{lang.onLocaleChange}">
+		            <f:selectItems value="#{lang.supportedLocales}" /> 
+		         </p:selectOneMenu> <br/>
+               <p:outputLabel value="#{msg.nav}"/>
+		         <p:commandButton id="exam" value="#{msg.gotoe}"    action="gotoExams"    styleClass="rounded-button" /> <br/><br/>
+		         <p:commandButton id="stud" value="#{msg.gotos}"    action="gotoStuds"    styleClass="rounded-button" /> <br/><br/>
+               <p:commandButton id="ve"   value="#{msg.viewe}"    action="viewe"        styleClass="rounded-button" /> <br/><br/>
+               <p:commandButton id="vs"   value="#{msg.views}"    action="views"        styleClass="rounded-button" /> <br/><br/>
+               <p:commandButton id="sch"  value="#{msg.schedule}" action="gotoSchedule" styleClass="rounded-button" />
+	         </div>
+         </div>
+      </h:form>
+   </h:body>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>#{msg.studs}</title>
+   </h:head>
+   <h:body>
+      <h:form>
+	      <p:outputLabel for="studName" value="#{msg.sname}"/><br/>
+	      <p:inputText id="studName"
+	                   value="#{stud.model.name}"
+	                   required="true"/><br/>
+	                   
+	      <p:outputLabel for="studExams" value="#{msg.slistexams}"/><br/>
+	      <p:selectManyCheckbox id="studExams" value="#{stud.model.exams}" layout="grid" columns="3" styleClass="grid-checkbox" converter="examconv"> 
+	         <f:selectItems value="#{exam.getAllModels()}" var="model" itemLabel="#{model.getName()}" itemValue="#{model}" />
+	      </p:selectManyCheckbox><br/><br/>
+	                   
+	      <p:commandButton id="submit" 
+	                       value="#{msg.submit}"
+	                       action="#{stud.persist()}"/>
+      </h:form>
+   </h:body>
+</html>

@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>All #{msg.exams}</title>
+   </h:head>
+   <h:body>
+      <h:form>
+	    <div class="card">
+	        <p:dataTable var="model" value="#{exam.getAllModels()}">
+	            <p:column headerText="${msg.ename}">
+	                <h:outputText value="#{model.name}" />
+	            </p:column>
+	
+	            <p:column headerText="${msg.edate}">
+	                <h:outputText value="#{model.date}">
+	                 <f:convertDateTime pattern="HH:mm" />
+	                </h:outputText>
+	            </p:column>
+	
+	            <p:column headerText="${msg.eduration}">
+	                <h:outputText value="#{model.duration}" />
+	            </p:column>
+	        </p:dataTable>
+         </div>
+      </h:form>
+   </h:body>
+</html>

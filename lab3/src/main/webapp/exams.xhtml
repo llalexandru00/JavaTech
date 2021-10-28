@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>#{msg.exams}</title>
+   </h:head>
+   <h:body>
+      <h:form>
+	      <p:outputLabel for="examName" value="#{msg.ename}:"/><br/>
+	      <p:inputText id="examName"
+	                   value="#{exam.model.name}"
+	                   required="true"/><br/>
+	                   
+	      <p:outputLabel for="examDate" value="#{msg.edate}:"/><br/>
+	      <p:datePicker id="examDate"
+	                    value="#{exam.model.date}" 
+	                    pattern="HH:mm"
+	                    timeOnly="true"/><br/>
+	                   
+	      <p:outputLabel for="examDuration" value="#{msg.eduration}:"/><br/>
+	      <p:inputNumber id="examDuration"
+	                     value="#{exam.model.duration}"
+	                     required="true"/><br/><br/>
+	                   
+	      <p:commandButton id="submit" 
+	                       value="#{msg.submit}"
+	                       action="#{exam.persist()}"/>
+      </h:form>
+   </h:body>
+</html>
