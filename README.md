@@ -40,3 +40,14 @@ Proiectul foloseste JSF impreuna cu mai multe bean-uri:
 * [Schedule Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/beans/ScheduleBean.java) este un bean la nivel de request ce gestioneaza componenta de grupare a examenelor pe zile. Acesta genereaza un model pentru componenta UI bazandu-se pe solutia problemei orarului rezolvata cu ajutorul SMT-solver-ului [Z3](https://github.com/Z3Prover/z3). [Z3 Schedule Resolver](https://github.com/llalexandru00/JavaTech/blob/main/lab3/src/main/java/ro/uaic/info/mt3/util/Z3ScheduleResolver.java) adauga in contextul Z3 constrangerile legate de examene sub forma de conditii logice. Pentru a optimiza numarul de zile, se aplica cautarea binara a numarul optim de zile folosind satisfiabilitatea formulei ca baza a functiei monotone suport. Modelul este extras doar dupa ce formula este satisfiabila cu numar minim de zile.
 
 Pentru partea de UI, [PrimeFaces](https://www.primefaces.org/) a fost folosit: dataTable, datePicker, selectOneMenu, inputNumber etc. De asemenea, un converter a fost folosit pentru examene pentru a le gestiona intr-un selectManyCheckbox cu selectItems.
+
+
+## Lab 4
+
+* https://profs.info.uaic.ro/~acf/tj/labs/lab_04.html
+
+Proiectul este o continuare pentru Lab3:
+* Paginile sunt construite folosind un [template](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/WEB-INF/templates/page.xhtml), unde este inclus [header](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/WEB-INF/decorators/header.xhtml), [menuBar](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/WEB-INF/decorators/menuBar.xhtml) si [footer](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/WEB-INF/decorators/footer.xhtml).
+* Tabelele cu model preconfigurat pentru examene si studenti sunt composite-uri definite ca [examgrid](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/resources/components/examgrid.xhtml) si [studgrid](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/resources/components/studgrid.xhtml). Acestea au un singur parametru, anume multimea de recorduri ce trebuie afisate in data-table.
+* Footer-ul include un copyright, versiunea aplicatiei si numarul de sesiuni active prin intermediul [Sess Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/java/ro/uaic/info/mt4/beans/SessBean.java). Numarul de sesiuni active se obtine live prin folosirea poll.
+* Au fost facute mai multe experimente legate de connection pool in cadrul Hibernate, c3p0 si [Tomcat](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/META-INF/context.xml). [Performanta](https://github.com/llalexandru00/JavaTech/blob/main/lab4/analiza.pdf) a fost analizata cu ajutorul unui [script in NodeJs](https://github.com/llalexandru00/JavaTech/blob/main/lab4/profile.js).
