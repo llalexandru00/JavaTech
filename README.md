@@ -52,7 +52,7 @@ Proiectul este o continuare pentru Lab3:
 * Footer-ul include un copyright, versiunea aplicatiei si numarul de sesiuni active prin intermediul [Sess Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/java/ro/uaic/info/mt4/beans/SessBean.java). Numarul de sesiuni active se obtine live prin folosirea poll.
 * Au fost facute mai multe experimente legate de connection pool in cadrul Hibernate, c3p0 si [Tomcat](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/META-INF/context.xml). [Performanta](https://github.com/llalexandru00/JavaTech/blob/main/lab4/analiza.pdf) a fost analizata cu ajutorul unui [script in NodeJs](https://github.com/llalexandru00/JavaTech/blob/main/lab4/profile.js).
 
-## Lab 4
+## Lab 5
 
 * https://profs.info.uaic.ro/~acf/tj/labs/lab_05.html
 
