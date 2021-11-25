@@ -18,11 +18,16 @@ import ro.uaic.info.mt5.model.Student;
 @Stateless
 public class PersistenceLayer
 {
+   /** The global manager which generates entity managers. */
    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("main-unit");
    
+   /** The local entity manager used by this persistence layer. */
    @PersistenceContext(unitName="main-unit")
    private EntityManager em;
    
+   /**
+    * Basic constructor
+    */
    public PersistenceLayer()
    {
       this.em = emf.createEntityManager();
