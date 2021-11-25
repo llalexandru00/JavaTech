@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+    
+    <application>
+      <locale-config>
+         <default-locale>en</default-locale>
+         <supported-locale>ro_RO</supported-locale>
+      </locale-config>
+      
+      <resource-bundle>
+         <base-name>Messages</base-name>
+         <var>msg</var>
+      </resource-bundle>
+    </application>
+    
+    <navigation-rule>
+      <from-view-id>/index.xhtml</from-view-id>
+      <navigation-case>
+         <from-outcome>gotoExams</from-outcome>
+         <to-view-id>/exams.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>gotoStuds</from-outcome>
+         <to-view-id>/students.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>viewe</from-outcome>
+         <to-view-id>/allexams.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>views</from-outcome>
+         <to-view-id>/allstuds.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>gotoSchedule</from-outcome>
+         <to-view-id>/schedule.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+    
+</faces-config>
