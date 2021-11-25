@@ -51,3 +51,13 @@ Proiectul este o continuare pentru Lab3:
 * Tabelele cu model preconfigurat pentru examene si studenti sunt composite-uri definite ca [examgrid](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/resources/components/examgrid.xhtml) si [studgrid](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/resources/components/studgrid.xhtml). Acestea au un singur parametru, anume multimea de recorduri ce trebuie afisate in data-table.
 * Footer-ul include un copyright, versiunea aplicatiei si numarul de sesiuni active prin intermediul [Sess Bean](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/java/ro/uaic/info/mt4/beans/SessBean.java). Numarul de sesiuni active se obtine live prin folosirea poll.
 * Au fost facute mai multe experimente legate de connection pool in cadrul Hibernate, c3p0 si [Tomcat](https://github.com/llalexandru00/JavaTech/blob/main/lab4/src/main/webapp/META-INF/context.xml). [Performanta](https://github.com/llalexandru00/JavaTech/blob/main/lab4/analiza.pdf) a fost analizata cu ajutorul unui [script in NodeJs](https://github.com/llalexandru00/JavaTech/blob/main/lab4/profile.js).
+
+## Lab 4
+
+* https://profs.info.uaic.ro/~acf/tj/labs/lab_05.html
+
+Proiectul este o continuare pentru Lab4:
+* Layer-ul de persistenta a fost rescris pentru a folosi specificatiile JPA prin [persistence.xml](https://github.com/llalexandru00/JavaTech/blob/main/lab5/src/main/java/META-INF/persistence.xml). Aici este configurat un unit ce foloseste conexiunea la nivel de server definita in [Tomcat](https://github.com/llalexandru00/JavaTech/blob/main/lab5/src/main/webapp/META-INF/context.xml).
+* Examenele au fost exinse incat acum putem lucra cu [examene scrise](https://github.com/llalexandru00/JavaTech/blob/main/lab5/src/main/java/ro/uaic/info/mt5/model/WrittenExam.java) sau [examene sub forma de proiect](https://github.com/llalexandru00/JavaTech/blob/main/lab5/src/main/java/ro/uaic/info/mt5/model/ProjectExam.java). Acestea sunt definite in aceeasi tabela a bazei de date si extind modelul Exam. Se foloseste ca discriminator campul dtype.
+* Query-urile si update-urile pentru baza de date sunt gestionate de [persistence layer](https://github.com/llalexandru00/JavaTech/blob/main/lab5/src/main/java/ro/uaic/info/mt5/PersistenceLayer.java). Acesta foloseste Named Query scrise in JPQL la nivelul fiecarui model. EntityManager-ul folosit de acest layer este generat de un factory.
+
