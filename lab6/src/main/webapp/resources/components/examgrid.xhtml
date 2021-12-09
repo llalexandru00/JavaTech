@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+   xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	<composite:interface>
+		<composite:attribute name="data" required="false"/>
+	</composite:interface>
+	
+	<composite:implementation>
+     <div class="card">
+        <p:dataTable var="model" value="#{cc.attrs.data}">
+            <p:column headerText="${msg.ename}">
+                <h:outputText value="#{model.name}" />
+            </p:column>
+
+            <p:column headerText="${msg.edate}">
+                <h:outputText value="#{model.date}">
+                 <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="${msg.eduration}">
+                <h:outputText value="#{model.duration}" />
+            </p:column>
+        </p:dataTable>
+      </div>
+	</composite:implementation>
+</html>

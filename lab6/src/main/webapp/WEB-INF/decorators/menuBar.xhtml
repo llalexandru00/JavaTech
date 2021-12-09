@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <h:form>
+        <p:menubar>
+            <p:menuitem value="#{msg.home}" outcome="/index.xhtml" icon="pi pi-home"/>
+	         <p:menuitem value="#{msg.gotoe}" outcome="/exams.xhtml" icon="pi pi-plus-circle" />
+	         <p:menuitem value="#{msg.gotos}" outcome="/students.xhtml" icon="pi pi-user-plus"/>
+	         <p:menuitem value="#{msg.viewe}" outcome="/allexams.xhtml" icon="pi pi-calendar-plus" />
+	         <p:menuitem value="#{msg.views}" outcome="/allstuds.xhtml" icon="pi pi-users"/>
+            <p:menuitem value="#{msg.reservation}" outcome="/reservation.xhtml" icon="pi pi-calendar"/>
+	         <p:menuitem value="#{msg.schedule}" outcome="/schedule.xhtml" icon="pi pi-calendar"/>
+        </p:menubar>
+      </h:form>
+</html>
