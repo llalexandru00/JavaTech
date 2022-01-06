@@ -71,3 +71,13 @@ Proiectul este o continuare pentru Lab5:
 * Bean-ul [ReservationSingletonBean](https://github.com/llalexandru00/JavaTech/blob/main/lab6/src/main/java/ro/uaic/info/mt6/reserv/ReservationSingletonBean.java) gestioneaza maparea resurselor la examene intr-un mod sincron, [ReservationStatefulBean](https://github.com/llalexandru00/JavaTech/blob/main/lab6/src/main/java/ro/uaic/info/mt6/reserv/ReservationStatefulBean.java) gestioneaza adaugarea unei noi mapari, iar [ReservationStatelessBean](https://github.com/llalexandru00/JavaTech/blob/main/lab6/src/main/java/ro/uaic/info/mt6/reserv/ReservationStatelessBean.java) verifica disponibilitatea unei resurse.
 * Un [interceptor](https://github.com/llalexandru00/JavaTech/blob/main/lab6/src/main/java/ro/uaic/info/mt6/interceptor/ProfilingInterceptor.java) pentru performanta contorizeaza apelurile pentru singleton.
 * Un [timer](https://github.com/llalexandru00/JavaTech/blob/main/lab6/src/main/java/ro/uaic/info/mt6/reserv/TimerServiceBean.java) este scris ca demo.
+
+## Lab 7
+
+* https://profs.info.uaic.ro/~acf/tj/labs/lab_07.html
+
+Proiectul nou este implementat cu JSF si foloseste:
+
+* [Autentificare](https://github.com/llalexandru00/JavaTech/blob/main/lab7/src/main/java/ro/uaic/info/mt7/beans/AuthBean.java) pentru a gestiona trei tipuri de useri: admini, revieweri si autori. Doar adminii pot adauga noi useri. User-ul curent este retinut de catre [SessionBean](https://github.com/llalexandru00/JavaTech/blob/main/lab7/src/main/java/ro/uaic/info/mt7/beans/SessBean.java).
+* [Papers](https://github.com/llalexandru00/JavaTech/blob/main/lab7/src/main/java/ro/uaic/info/mt7/beans/PaperBean.java) pentru gestiunea de paper-uri. Autorii pot adauga paper-uri sub forma de pdf, ce vor fi uploadate in baza de date sub forma de byte array. Toate paper-urile pot fi vazute de catre admini si descarcate.
+
