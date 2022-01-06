@@ -1,0 +1,17 @@
+<ui:composition 
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/page.xhtml">
+	<ui:param name="pageTitle" value="#{msg['main.title']}" />
+	<ui:define name="content">
+		<h:form>
+			<div class="ui-fluid p-formgrid p-grid">
+            <h:outputText id="info_username" value="Logged as: #{sess.user.username}"/> <br/>
+            <h:outputText id="info_role" value="Role: #{sess.user.role}"/>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

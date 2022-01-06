@@ -1,0 +1,25 @@
+<html 
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:p="http://primefaces.org/ui">
+   <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+      <h:form>
+         <div class="ui-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-2">
+               <p:outputLabel for="@next" value="#{msg.username}" />
+               <p:inputText id="username" value="#{auth.username}"/>
+               
+               <p:outputLabel for="@next" value="#{msg.password}" />
+               <p:password id="passwd" value="#{auth.password}"/>
+               
+                      
+               <p:commandButton id="submit" 
+                                value="#{msg.submit}"
+                                action="#{auth.login()}"/>
+            </div>
+         </div>
+      </h:form>
+   </f:view>
+</html>

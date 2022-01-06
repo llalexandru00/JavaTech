@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:composite="http://java.sun.com/jsf/composite"
+   xmlns:p="http://primefaces.org/ui"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html">
+   
+   <composite:interface>
+      <composite:attribute name="data" required="false"/>
+   </composite:interface>
+   
+   <composite:implementation>
+     <div class="card">
+        <p:dataTable var="model" value="#{cc.attrs.data}">
+            <p:column headerText="Id">
+                <h:outputText value="#{model.ord}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{model.name}" />
+            </p:column>
+            <p:column headerText="Author">
+                <h:outputText value="#{model.author.username}" />
+            </p:column>
+            <p:column headerText="Data">        
+               <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"
+                         icon="pi pi-arrow-down" styleClass="p-mr-2">
+                  <p:fileDownload value="#{paper.getFile(model)}"/>
+               </p:commandButton>
+            </p:column>
+        </p:dataTable>
+      </div>
+   </composite:implementation>
+</html>

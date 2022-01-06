@@ -1,0 +1,32 @@
+<ui:composition 
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/page.xhtml">
+   <ui:param name="pageTitle" value="#{msg.exams}" />
+   <ui:define name="content">
+      <h:form>
+         
+         <p:outputLabel for="userName" value="#{msg.username}:"/><br/>
+         <p:inputText id="userName"
+                      value="#{auth.username}"
+                      required="true"/><br/>
+                      
+         <p:outputLabel for="password" value="#{msg.password}:"/><br/>
+         <p:password id="password"
+                     value="#{auth.password}" 
+                     required="true"/><br/>
+                        
+         <p:outputLabel for="@next" value="role"/><br/>
+         <p:selectOneMenu id="role" value="#{auth.role}">
+            <f:selectItems value="#{auth.roles}"/>
+         </p:selectOneMenu><br/><br/>
+                      
+         <p:commandButton id="submit" 
+                          value="#{msg.submit}"
+                          action="#{auth.register()}"/>
+      </h:form>
+   </ui:define>
+</ui:composition>

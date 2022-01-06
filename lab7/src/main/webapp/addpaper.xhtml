@@ -1,0 +1,30 @@
+<ui:composition 
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:p="http://primefaces.org/ui"
+   template="/WEB-INF/templates/page.xhtml">
+   <ui:param name="pageTitle" value="#{msg.exams}" />
+   <ui:define name="content">
+      <h:form>
+         
+         <p:outputLabel for="@next" value="Name:"/><br/>
+         <p:inputText id="paperName"
+                      value="#{paper.model.name}"
+                      required="true"/><br/>
+                      
+         <p:outputLabel for="@next" value="File:"/><br/>
+         <p:fileUpload mode="advanced"
+                       multiple="false"
+                       sizeLimit="2048000" allowTypes="/(\.|\/)(pdf)$/"
+                       invalidSizeMessage="Maximum file size allowed is 2 MB"
+                       invalidFileMessage="only pdf is allowed"
+                       listener="#{paper.upload}"/>
+         
+         <p:commandButton id="submit" 
+                          value="#{msg.submit}"
+                          action="#{paper.persist()}"/>
+      </h:form>
+   </ui:define>
+</ui:composition>

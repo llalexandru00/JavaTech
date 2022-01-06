@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
+      <h:form>
+        <p:menubar>
+            <c:if test="#{sess.isAdmin()}">
+	            <p:menuitem value="#{msg.home}" outcome="/index.xhtml" icon="pi pi-home"/>
+		         <p:menuitem value="#{msg.gotou}" outcome="/users.xhtml" icon="pi pi-users" />
+               <p:menuitem value="#{msg.gotop}" outcome="/allpapers.xhtml" icon="pi pi-paperclip" />
+               <p:menuitem value="log out" outcome="/auth.xhtml" icon="pi pi-sign-out" />
+	         </c:if>
+            <c:if test="#{sess.isAuthor()}">
+               <p:menuitem value="#{msg.home}" outcome="/index.xhtml" icon="pi pi-home"/>
+               <p:menuitem value="Add paper" outcome="/addpaper.xhtml" icon="pi pi-paperclip" />
+               <p:menuitem value="log out" outcome="/auth.xhtml" icon="pi pi-sign-out" />
+            </c:if>
+            <c:if test="#{sess.isReviewer()}">
+               <p:menuitem value="#{msg.home}" outcome="/index.xhtml" icon="pi pi-home"/>
+               <p:menuitem value="log out" outcome="/auth.xhtml" icon="pi pi-sign-out" />
+            </c:if>
+        </p:menubar>
+      </h:form>
+</html>
